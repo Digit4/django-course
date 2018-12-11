@@ -1,0 +1,33 @@
+.ac {
+	text-align: center;
+}
+.fourpc {
+	align-content: flex-start;
+}
+.raisetxt {
+	font-size: 90px;
+}
+
+table.xogrid {
+	margin-left: auto;
+	margin-right: auto;
+
+}
+
+#fixwidth {
+	width: 150px;
+	height: 150px;
+	text-align: center;
+}
+
+table{
+	text-align: center;
+}
+td {
+	width: 50px;
+	border: 3px rgb(0, 25, 63) solid;
+}
+button {
+	width: inherit;
+	height: inherit;
+}

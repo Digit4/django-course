@@ -1,0 +1,40 @@
+body {
+	background-color:#002442;
+	margin:0px;
+}
+p {
+	font-size: 1em;
+	padding: 60px 15% 0px 15%;
+}
+h1 {
+	font-size: 2em;
+	margin
+}
+h2 {
+	font-size: 1.5em;
+	margin:25px 0px 50px 0px;
+
+}
+.userinput {
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-size: 20px;
+}
+.centered {
+	text-align: center;
+	font-family: "Montserrat";
+	color: white;
+	background-color: #002442;
+	border-bottom: 100px solid #76d7ed;
+	border-left: 50px solid #76d7ed;
+	border-right: 50px solid #76d7ed;
+}
+#sub {
+	border-style:outset;
+	font-size: 20px;
+	font-family: "Montserrat";
+	background-color: yellow;
+	font-weight: bold;
+	padding:30px;
+	border-radius: 20px;
+}

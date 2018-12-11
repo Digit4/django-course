@@ -1,0 +1,20 @@
+/* This is a Comment */
+
+/* selected tag {
+	property:value;
+} */
+h1 {
+	color:purple;
+}
+
+li {
+	color: rgb(36,89,33);
+}
+
+p {
+	color:#8effb0;
+}
+
+h4 {
+	color:rgba(239,143,26,0.5);
+}

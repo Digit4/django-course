@@ -1,0 +1,14 @@
+body{
+    color:#000111;
+}
+
+.boxy {
+            background: #b3ddff;
+            border: 3px solid black;
+        }
+
+img{
+    background-color: antiquewhite;
+    width: 100%;
+    height: 100%;
+}

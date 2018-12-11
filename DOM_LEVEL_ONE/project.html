@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv=" -UA-Compatible" content="IE=edge">
+	<title>Tic Tac Toe</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/ +965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" media="screen" href="project.css" />
+	<script src="project.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="jumbotron">
+			<h1 class="ac">Welcome to Tic Tac Toe</h1>
+			<button type="reset" class="btn btn-primary fourpc" onclick="playbtn()">Restart</button>
+		</div>
+
+		<div class="container">
+			<table class="xogrid">
+				<tr>
+					<td id="fixwidth">
+						<button name="db11" onclick="change_state('db11')" type="button" class="btn btn-light raisetxt"> </button>
+					</td>
+					<td id="fixwidth">
+						<button name="db12" onclick="change_state('db12')" type="button" class="btn btn-light raisetxt"> </button>
+					</td>
+					<td id="fixwidth">
+						<button name="db13" onclick="change_state('db13')" type="button" class="btn btn-light raisetxt"> </button>
+					</td>
+				</tr>
+				<tr>
+					<td id="fixwidth">
+						<button name="db21" onclick="change_state('db21')" type="button" class="btn btn-light raisetxt"> </button>
+					</td>
+					<td id="fixwidth">
+						<button name="db22" onclick="change_state('db22')" type="button" class="btn btn-light raisetxt"> </button>
+					</td>
+					<td id="fixwidth">
+						<button name="db23" onclick="change_state('db23')" type="button" class="btn btn-light raisetxt"> </button>
+					</td>
+				</tr>
+				<tr>
+					<td id="fixwidth">
+						<button name="db31" onclick="change_state('db31')" type="button" class="btn btn-light raisetxt"> </button>
+					</td>
+					<td id="fixwidth">
+						<button name="db32" onclick="change_state('db32')" type="button" class="btn btn-light raisetxt"> </button>
+					</td>
+					<td id="fixwidth">
+						<button name="db33" onclick="change_state('db33')" type="button" class="btn btn-light raisetxt"> </button>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+</body>
+</html>

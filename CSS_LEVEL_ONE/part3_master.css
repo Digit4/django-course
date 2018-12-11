@@ -1,0 +1,28 @@
+div {
+	color:red;
+}
+
+.first {
+	color: blue;
+}
+.second {
+	color:green;
+}
+
+/* ids can be used for only singled out elements while classes can be used for multiple elements */
+
+#single {
+	color: purple;
+	text-decoration: line-through;
+}
+
+h3 + ul {
+	border: red 3px solid;
+}
+
+li a {
+	color: #d8841e;
+}
+li a[href="www.google.com"]	{
+	border:blue 2px dotted;
+}

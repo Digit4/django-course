@@ -1,0 +1,38 @@
+h1 {
+	text-transform: capitalize;
+	font-family: Lobster;
+	text-align: center;
+}
+
+.centered {
+	text-align: center;
+	margin:auto;
+	width: 90%;
+	height:300px;
+}
+#one {
+	background-color: #E6C229;
+}
+#two {
+	background-color: #00376B;
+}
+#three {
+	background-color: #5B5391;
+}
+#four {
+	background-color: #0582CA;
+}
+#five {
+	background-color: #F17105;
+}
+#six {
+	background-color: #EDB371;
+}
+#seven {
+	background-color: #CC1F0E;
+}
+
+td {
+	border: 3px solid white;
+	background-color: black;
+}
