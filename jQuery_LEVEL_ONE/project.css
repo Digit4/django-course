@@ -1,8 +1,26 @@
 .midalign {
 	text-align: center;
+	border-radius: 25px;
 }
 
 body {
 	color: #494949;
 	background: #ddc49f;
+}
+
+.board button {
+	width: 100px;
+	height: 100px;
+	background-color: gray;
+	border-radius: 50%;
+	margin: 1px;
+	border: #494949 solid 2px;
+}
+
+.redCoin {
+	background-color: #aa0404;
+}
+
+.blueCoin {
+	background-color: #034aa7;
 }
