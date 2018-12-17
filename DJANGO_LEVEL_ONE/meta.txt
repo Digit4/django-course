@@ -1,3 +1,14 @@
 conda info --envs
 ####
 desc: displays all anaconda environments created
+####
+
+django-admin startproject <project_name>
+####
+desc: creates a folder dedicated to the application (basically for one website we create a single folder)
+####
+
+python manage.py startapp <app_name>
+####
+desc: creates applications for specific purposes (for ex: comments section will be its own app, navbar will be its own app. even a whole static webpage can be considered its own app)
+####
