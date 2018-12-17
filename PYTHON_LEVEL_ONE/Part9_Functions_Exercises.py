@@ -167,4 +167,10 @@ print(no_teen_sum(1, 2, 3), no_teen_sum(2, 13, 1), no_teen_sum(2, 1, 14))
 # count_evens([1, 3, 5]) → 0
 
 def count_evens(nums):
-  pass# CODE GOES HERE
+  num_even = 0
+  for i in nums:
+    if (i % 2 == 0):
+      num_even += 1
+  return num_even
+
+print(count_evens([2,1,2,3,4]),count_evens([2,2,0]),count_evens([1,3,5]))
