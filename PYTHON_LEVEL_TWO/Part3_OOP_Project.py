@@ -26,11 +26,12 @@
 #
 # https://en.wikipedia.org/wiki/War_(card_game)
 
-from random import shuffle
+from random import shuffle, choice
+from time import sleep
 
 # Two useful variables for creating Cards.
-SUITE = 'Hearts Diamonds Spades Clubs'.split()
-RANKS = 'Ace 2 3 4 5 6 7 8 9 10 Jack Queen King'.split()
+SUITE = 'H D S C'.split()
+RANKS = 'A 2 3 4 5 6 7 8 9 10 J Q K'.split()
 
 class Deck():
 
@@ -53,7 +54,9 @@ class Deck():
     
     def distribute_cards(self):
         card_len = len(Deck.card_list)
-        return [Deck.card_list[:card_len//2],Deck.card_list[card_len//2:]]
+        division = card_len // 2
+        other = card_len - division
+        return [Deck.card_list[:division],Deck.card_list[other:]]
 
     def shuffle_deck(self):
         return shuffle(Deck.card_list)
@@ -73,29 +76,51 @@ class Hand(Deck):
     This is the Hand class. Each player has a Hand, and can add or remove
     cards from that hand. There should be an add and remove card method here.
     '''
+
+    hand_num = 0
+
     def __init__(self):
-        self.cards_in_hand = []
+        self.cards_in_hand = Deck.distribute_cards(self)[Hand.hand_num]
+        Hand.hand_num += 1
 
     def __str__(self):
         return str(self.cards_in_hand)
+    
+    def __len__(self):
+        return len(self.cards_in_hand)
 
-    def add_to_hand(self):
-        self.cards_in_hand.append()
+    def check_hand(self, card):
+        for i in self.cards_in_hand:
+            if(card == i):
+                return True
+        return False
 
-    #def remove_from_hand():
+    def remove_from_hand(self, card):
+        self.cards_in_hand.remove(card)
+    
+    def add_to_hand(self, card):
+        self.cards_in_hand.append(card)
 
 class Player(Hand):
     """
     This is the Player class, which takes in a name and an instance of a Hand
     class object. The Payer can then play cards and check if they still have cards.
     """
-    def __init__(self, pname,player_hand):
+
+    def remove_from_hand(self, card):
+        super(Hand, self).remove_from_hand(card)
+        
+    def add_to_hand(self, card):
+        super(Hand, self).add_to_hand(card)
+
+    def __init__(self, pname):
         self.player_name = pname
-        self.player_hand = player_hand
+        self.player_hand = Hand()
         print(self.player_name + " has joined the game")
-        for i in range(len(Deck.card_list)//2):
-            self.player_hand.cards_in_hand.append(Deck.card_list[i])
         print(self.player_name + " has taken his cards")
+
+    def __str__(self):
+        return ("Player Name:" + self.player_name + " has " + ",".join(self.player_hand.cards_in_hand) + "\n")
 
 
 ######################
@@ -105,10 +130,114 @@ print("Welcome to War, let's begin...")
 deck = Deck()
 deck.shuffle_deck()
 
-phand1 = Hand()
-p1 = Player("Dhaval", phand1)
+def check_suite(string):
+    if (string == "h" or string == "s" or string == "d" or string == "c"):
+        return string.upper()
+    else:
+        return False        
 
+def rank_reversal(val):
+    if (type(val) == type("aaa")):
+        val = int(val)
+    if (val == 11):
+        return "J"
+    elif (val == 12):
+        return "Q"
+    elif (val == 13):
+        return "K"
+    elif (val == 14):
+        return "A"
+    else:
+        return str(val)
 
+def check_rank(string):
+    string = string.lower()
+    if (string.isnumeric()):
+        return int(string)
+    else:
+        if (string == "qqq"):
+            exit(0)
+        if (string == "a"):
+            return 14
+        elif (string == "k"):
+            return 13
+        elif (string == "q"):
+            return 12
+        elif (string == "j"):
+            return 11
+        else:
+            return 0
 
+def parser(string):
+    hand = list(map(str, string.split()))
+    rank = check_rank(hand[0].lower())
+    suite = check_suite(hand[-1].lower())
+    if (not suite):
+        print("Please enter appropriate suite.")
+    else:
+        if (rank != 0):
+            return [rank,suite]
+        else:
+            print("Please enter valid input")
 
+pname = input("Enter player's name:")
+p1 = Player(pname)
+p2 = Player("Computer")
+
+cards_on_hold = []
+
+game_over = False
+
+while (not game_over):
+    print(p1.player_name + "'s Turn. Please select a card to play.")
+    print(p1.player_hand)
+    ch = input("Keep values space seperated:")
+    r = parser(ch)
+    sleep(1)
+    
+    if (r == None):
+        continue
+    else:
+        player_card = rank_reversal(r[0]) + " of " + r[1]
+        if (p1.player_hand.check_hand(player_card)):
+            print("%s played %s" % (p1.player_name, player_card))
+        else:
+            print("you do not have this card.")
+            continue
+        print("Computer's turn...")
+        comp_card = "5 of S"#choice(RANKS) + " of " + choice(SUITE)
+        while (not p2.player_hand.check_hand(comp_card)):
+            comp_card = choice(RANKS) + " of " + choice(SUITE)
+        print("%s played %s" % (p2.player_name, comp_card))
+    player_card_arr, comp_card_arr = player_card.split(), comp_card.split()
+    comp_rank = check_rank(comp_card_arr[0])
+    player_rank =  check_rank(player_card_arr[0])
+    if (player_rank > comp_rank):
+        sleep(1)
+        print("Player Won the round!")
+        p1.player_hand.add_to_hand(comp_card)
+        p2.player_hand.remove_from_hand(comp_card)
+        while (cards_on_hold):
+            p1.player_hand.add_to_hand(cards_on_hold.pop())
+    elif (player_rank < comp_rank):
+        sleep(1)
+        print("Computer Won the round!")
+        p2.player_hand.add_to_hand(player_card)
+        p1.player_hand.remove_from_hand(player_card)
+        while (cards_on_hold):
+            p2.player_hand.add_to_hand(cards_on_hold.pop())
+    else:
+        sleep(1)
+        print("WAR, Do the round again and whoever wins the round, gets all the cards.")
+        cards_on_hold.extend([player_card, comp_card])
+        p1.player_hand.remove_from_hand(player_card)
+        p2.player_hand.remove_from_hand(comp_card)
+
+    if (len(p1.player_hand.cards_in_hand) == 52):
+        print(p1.player_name + " Wins!\n\n\n")
+        game_over = True
+    elif (len(p1.player_hand.cards_in_hand) == 0):
+        print(p2.player_name + " Wins!\n\n\n")
+        game_over = True
+    
 # Use the 3 classes along with some logic to play a game of war!
