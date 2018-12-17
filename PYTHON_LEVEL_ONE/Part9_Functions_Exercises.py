@@ -49,7 +49,14 @@ arrayCheck([1, 1, 2, 1, 2, 3]))
 # stringBits('Heeololeo') → 'Hello'
 
 def stringBits(str):
-  hello = 0
+  new_str_arr = []
+  for i,v in enumerate(str):
+    if (i % 2 == 0):
+      new_str_arr.append(v)
+  return "".join(new_str_arr)
+    
+
+print(stringBits('Hello'), stringBits('Hi'), stringBits('Heeololeo'))
 
 
 #####################
@@ -70,8 +77,28 @@ def stringBits(str):
 
 
 def end_other(a, b):
-  pass# CODE GOES HERE
+  alen,blen = len(a),len(b)
+  if (alen > blen):
+    return end_check(a, b, blen)
+  else:
+    return end_check(b, a, alen)
 
+    
+def end_check(x, y, itr):
+  flag = False
+  xlen = len(x)
+  for i in range(itr - 1, 0, -1):
+    xlen -= 1
+    if (y[i].lower() == x[xlen].lower()):
+      flag = True
+    else:
+      flag = False
+  
+  return flag
+
+
+print(end_other('Hiabc', 'abc'), end_other(
+    'AbC', 'HiaBc'), end_other('abc', 'abXabc'))
 #####################
 ## -- PROBLEM 4 -- ##
 #####################
@@ -83,9 +110,16 @@ def end_other(a, b):
 # doubleChar('AAbb') → 'AAAAbbbb'
 # doubleChar('Hi-There') → 'HHii--TThheerree'
 
-def doubleChar(str):
-  pass# CODE GOES HERE
+def doubleChar(string):
+  ar = list(map(str, string))
+  new_arr = []
+  for i in ar:
+    new_arr.append(i)
+    new_arr.append(i)
+  return "".join(new_arr)
 
+
+print(doubleChar("The"))
 
 #####################
 ## -- PROBLEM 5 -- ##
