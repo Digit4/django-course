@@ -1,0 +1,3 @@
+conda info --envs
+####
+desc: displays all anaconda environments created
