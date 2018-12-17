@@ -29,36 +29,86 @@
 from random import shuffle
 
 # Two useful variables for creating Cards.
-SUITE = 'H D S C'.split()
-RANKS = '2 3 4 5 6 7 8 9 10 J Q K A'.split()
+SUITE = 'Hearts Diamonds Spades Clubs'.split()
+RANKS = 'Ace 2 3 4 5 6 7 8 9 10 Jack Queen King'.split()
 
-class Deck:
+class Deck():
+
+    card_list = []
     """
     This is the Deck Class. This object will create a deck of cards to initiate
     play. You can then use this Deck list of cards to split in half and give to
     the players. It will use SUITE and RANKS to create the deck. It should also
     have a method for splitting/cutting the deck in half and Shuffling the deck.
     """
-    pass
+    def __init__(self):
+        for face in SUITE:
+            for num in RANKS:
+                Deck.card_list.append(num + " of " + face)
 
-class Hand:
+        print("Deck of Cards have been created.")
+
+    def __str__(self):
+        return str(Deck.card_list)
+    
+    def distribute_cards(self):
+        card_len = len(Deck.card_list)
+        return [Deck.card_list[:card_len//2],Deck.card_list[card_len//2:]]
+
+    def shuffle_deck(self):
+        return shuffle(Deck.card_list)
+
+    def cut_deck(self,rot):
+        new_array, l = [], len(Deck.card_list)
+        mov_index = rot
+        for i in Deck.card_list:
+            new_array.append(Deck.card_list[mov_index % l])
+            mov_index += 1
+            i = i
+        return new_array
+        
+
+class Hand(Deck):
     '''
     This is the Hand class. Each player has a Hand, and can add or remove
     cards from that hand. There should be an add and remove card method here.
     '''
-    pass
+    def __init__(self):
+        self.cards_in_hand = []
 
-class Player:
+    def __str__(self):
+        return str(self.cards_in_hand)
+
+    def add_to_hand(self):
+        self.cards_in_hand.append()
+
+    #def remove_from_hand():
+
+class Player(Hand):
     """
     This is the Player class, which takes in a name and an instance of a Hand
     class object. The Payer can then play cards and check if they still have cards.
     """
-    pass
+    def __init__(self, pname,player_hand):
+        self.player_name = pname
+        self.player_hand = player_hand
+        print(self.player_name + " has joined the game")
+        for i in range(len(Deck.card_list)//2):
+            self.player_hand.cards_in_hand.append(Deck.card_list[i])
+        print(self.player_name + " has taken his cards")
 
 
 ######################
 #### GAME PLAY #######
 ######################
 print("Welcome to War, let's begin...")
+deck = Deck()
+deck.shuffle_deck()
+
+phand1 = Hand()
+p1 = Player("Dhaval", phand1)
+
+
+
 
 # Use the 3 classes along with some logic to play a game of war!
