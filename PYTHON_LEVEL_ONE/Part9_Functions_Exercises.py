@@ -114,8 +114,7 @@ def doubleChar(string):
   ar = list(map(str, string))
   new_arr = []
   for i in ar:
-    new_arr.append(i)
-    new_arr.append(i)
+    new_arr.append(i*2)
   return "".join(new_arr)
 
 
