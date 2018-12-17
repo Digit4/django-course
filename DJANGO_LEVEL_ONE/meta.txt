@@ -12,3 +12,9 @@ python manage.py startapp <app_name>
 ####
 desc: creates applications for specific purposes (for ex: comments section will be its own app, navbar will be its own app. even a whole static webpage can be considered its own app)
 ####
+
+python manage.py runserver
+####
+desc: runs the virtual server for hosting the website
+remember to cd into the directory of the project.
+####
