@@ -76,6 +76,12 @@ while (not digits_matched):
 	if (num_len_check(guess)):
 		continue
 	guessed_nums = num_validity_converstion(guess)
-	print(game_rules(digits,guessed_nums))
-	
+	clues_arr = game_rules(digits[:3], guessed_nums)
+	if (clues_arr[0] == 3):
+		digits_matched = True
+	if (not digits_matched):
+		print("Here's the result of your guess:")
+		print ("Matches:%d\tClose:%d\t\tNope:%d\t" %(clues_arr[0],clues_arr[1],clues_arr[2]))
+	else:
+		print("Hooray!! YOU WIN!!")	
 
