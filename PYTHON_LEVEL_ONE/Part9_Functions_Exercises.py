@@ -143,9 +143,16 @@ print(doubleChar("The"))
 # no_teen_sum(2, 1, 14) → 3
 
 def no_teen_sum(a, b, c):
-  pass# CODE GOES HERE
+  a, b, c = fix_teen(a), fix_teen(b), fix_teen(c)
+  return (a + b + c)
+
 def fix_teen(n):
-  pass# CODE GOES HERE
+  if (n >= 13 and n <= 19):
+    if (n != 15 and n != 16):
+      return 0
+  return n
+
+print(no_teen_sum(1, 2, 3), no_teen_sum(2, 13, 1), no_teen_sum(2, 1, 14))
 
 #####################
 ## -- PROBLEM 6 -- ##
