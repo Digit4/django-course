@@ -3,4 +3,4 @@
 3. Add the path to the static folder into the settings.py using,
 os.path.join(BASE_DIR,'static')
 4. Add a variable (if doesn't exist) called STATICFILES_DIRS as an array for mentioning all the locations where the static files are stored.
-5.
+5. Add the image file into the images folder created in step 2.
