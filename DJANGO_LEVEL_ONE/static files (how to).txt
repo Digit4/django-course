@@ -3,4 +3,15 @@
 3. Add the path to the static folder into the settings.py using,
 os.path.join(BASE_DIR,'static')
 4. Add a variable (if doesn't exist) called STATICFILES_DIRS as an array for mentioning all the locations where the static files are stored.
+and then add the STATIC_DIR into the list as an element.
 5. Add the image file into the images folder created in step 2.
+(We can now access static files from the server by adding location of the file inside the base folder as address
+for example for pic.jpg in the given example, we use 127.0.0.1:8000/static/images/pic.jpg to view the file in the browser)
+6. Now we need to add the image tag (if we want to dispay he image in an html file) to the html file to add the file.
+7. Now we need to add this piece of code right below <!DOCTYPE html> so we are allowed to access static data inside the html template.
+{% load staticfiles %}
+8. In the src="" we need to add a sort of template tag like {%<static_content_here>%} so it will look like this:
+<img src="{%static '<path_to_image_inside_static_folder>'%}">
+
+9. We can also use static folder to host other kind of files like css,JS files which are not going to be dynamically generated.
+10. To do this we need to simply in the <link> tag use template variables in href="".
