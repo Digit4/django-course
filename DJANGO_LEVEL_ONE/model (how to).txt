@@ -1,0 +1,32 @@
+1. Add classes derived from models.Model in models.py inside the app.
+Syntax is given in the example
+2. Run the following command: python manage.py migrate
+3. After this run the following command: python manage.py makemigrations <app_name>
+4. Follow up with the errors (if any). then to check whether the models have been perfectly migrated,
+type this into shell : pyhton manage.py shell
+This will open up a python shell.
+
+4.1. Type: from <app_name>.models import <class_name>
+
+>x = <class_name>.(<member_variable>=<value>,...)
+>x.save() # this is a function which is inherited by the class from models.Model
+
+4.2. Now to check whether the instance has been properly added to the database, just print:
+>print(<class_name>.objects.all())
+
+5. Exit the shell using Ctrl+Z key.
+6. For better convenience purposes, we'd like to use the admin panel given by django rather than adding instances via console.
+7. In order to access the given classes in admin panel, we need to add the following code to the admin.py file.
+
+>from <app_name>.models import <comma_seperated_classes>
+(ex: from hello_world_app.models import Topic,AccessRecord,WebPage)
+
+>admin.site.register(<class_name>) # do this for each class you want to edit inside the admin page.
+
+8. Now in order to use the admin page, we need to create an superuser, this way only the admin is able to tinker with the database.
+> python manage.py createsuperuser # make sure there are no spaces between create, super and user
+it will prompt for username,email and password which you'll fill in.
+
+9. Now run the server using python manage.py runserver
+
+10. go to http://127.0.0.1:8000/admin and use the login credentials you've just created to login to admin page.
