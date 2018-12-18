@@ -1,12 +1,18 @@
 <!DOCTYPE html>
+{%load staticfiles%}
 <html>
 <head>
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>First App</title>
+	<title>Ducklings Playing Page</title>
+	<link rel="stylesheet" href="{% static 'css/mystyle.css' %}" type="text/css">
 </head>
 <body>
-	<h1 align="center">Hello to you too!!</h1>
-	{{insert_me}}
+	<h1 align="center">Hi! this is a picture of cute ducklings playing in a field</h1>
+	<p>
+		{{insert_me}}
+	</p>
+	<img src="{%static 'images/pic.jpg'%}" alt="Oops, something went wrong.">
+
 </body>
 </html>

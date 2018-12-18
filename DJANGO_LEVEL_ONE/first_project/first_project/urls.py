@@ -20,6 +20,6 @@ from hello_world_app import views
 
 urlpatterns = [
     #path('', views.index, name = "index"),
-    url(r'^first_app/',include('hello_world_app.urls')),
+    url(r'^$',include('hello_world_app.urls')),
     path('admin/', admin.site.urls),
 ]
