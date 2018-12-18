@@ -3,6 +3,11 @@ conda info --envs
 desc: displays all anaconda environments created
 ####
 
+source activate <environment_name>
+####
+desc: starts the virtual environment at the current location
+####
+
 django-admin startproject <project_name>
 ####
 desc: creates a folder dedicated to the application (basically for one website we create a single folder)
