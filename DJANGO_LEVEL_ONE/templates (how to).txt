@@ -1,0 +1,13 @@
+1. Create a templates directory in the project's base folder
+2. Create the app specific folder inside the templates folder
+3. Create the .html file which will be the template. (the file should contain proper template tag/variable)
+4. Go to settings.py and with the help of python's os module, we can add the template directory into the appropriate template dictionary key:value pair.
+(using os.path.join())
+5. Now go to the views.py file and inside a function, create a dictionary with the dynamic content in a key: value pair fashion.
+6. Now use the render() function to return the dynamic content inside the dynamically written webage template
+(Syntax for render function is as follows:
+	render(request,"<path>",context=<dictionary>)
+	request: it is the parameter taken by the function(as per norm).
+	<path>: is the file directory location where the .html file template is present.
+	<dictionary>: is the dictionary with key value pairs of custom dynamically generated content.
+)
