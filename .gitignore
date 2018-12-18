@@ -1,3 +1,4 @@
 /DJANGO_LEVEL_ONE/*/*/__pycache__
 *.pyc
 *.sqlite3
+populate.py
