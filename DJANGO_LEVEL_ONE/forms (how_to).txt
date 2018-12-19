@@ -1,5 +1,5 @@
 1. Create a forms.py file inside the app of your choice
-2. add the following boiler plate code:
+2. Add the following boiler plate code:
 ----
 from django import forms
 
@@ -20,4 +20,42 @@ from . import forms # '.' represents current directory in which views.py is pres
 ----
 def form_view(request):
 	form = FormName()
-	return render(request,'form_name.html',{'form':form})
+	return render(request,'(from template location)form_name.html',{'form':form})
+----
+
+5. Finally add a url for the form_page in urls.py file.
+
+6. Inside templates in order for the form to look pretty, since if we dont' do it the form woll look pretty ugly,
+we will add the following code.
+----
+<div class="container">
+	<form method="POST">
+		{{form.as_p}} # the as_p will give each element of the form a <p> tag to make it look prettier.
+		{% csrf_token %} # cross-site request forgery token helps user/website from having false data entered into the database.
+						 # it helps protect HTTP POST Request
+						 # form may not work without the token
+		<input type="submit" class="btn btn-primary" value="Submit">
+	</form>
+</div>
+----
+
+7. Now that even though we've created the form the form will not get submitted anywhere because the submit button doesnt have an action associated with it.
+
+8. To attach a post method to the submit button, we need to add the following code below the form_view(request) function:
+def form_view(request):
+	form = FormName()
+
+	# Check if we get a post back from the form
+	if request.method == "POST":
+		# In which case we pass in that request
+		form = forms.FormName(request.POST)
+
+		# Check if the form is valid
+		if form.is_valid():
+			# Do something
+			print("Form Validation Success. Printing entered values in console")
+			print("Name:%s" %form.cleaned_data['name'])
+			print("Email:%s" %form.cleaned_data['email'])
+			print("Text:%s" %form.cleaned_data['text'])
+
+	return render(request,'(from template location)form_name.html',{'form':form})
