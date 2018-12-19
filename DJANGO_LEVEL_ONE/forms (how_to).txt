@@ -1,0 +1,23 @@
+1. Create a forms.py file inside the app of your choice
+2. add the following boiler plate code:
+----
+from django import forms
+
+class FormName(forms.Form):
+	name = forms.CharField()
+	email = forms.EmailField()
+	text = forms.TextField(widget=forms.TextArea)
+----
+
+3. Now inside the views.py of the app, we'll import the forms.py file.
+----
+from <app_name>.forms import FormName
+OR
+from . import forms # '.' represents current directory in which views.py is present.
+----
+
+4. Now we need to create a view for it
+----
+def form_view(request):
+	form = FormName()
+	return render(request,'form_name.html',{'form':form})
