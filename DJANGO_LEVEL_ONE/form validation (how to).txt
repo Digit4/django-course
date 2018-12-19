@@ -20,3 +20,13 @@ class NewForm(forms.Form):
 	# widget=forms.HiddenInput hides the charfield instead of showing it as a field in the form.
 	# validators is an array which will contain multiple validators if needed and can be passed in a list format.
 ----
+
+to clean out all data from the form with specific format for eg, whether email and verifyemail match or not, we use clean() function definition to do it.
+----
+def clean(self):
+		all_clean_data = super().clean()
+		email = all_clean_data['email']
+		v_mail = all_clean_data["verify_email"]
+		if (email != v_mail):
+			raise forms.ValidationError("emails do not match")
+----
