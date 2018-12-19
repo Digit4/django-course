@@ -8,7 +8,7 @@ This will open up a python shell.
 
 4.1. Type: from <app_name>.models import <class_name>
 
->x = <class_name>.(<member_variable>=<value>,...)
+>x = <class_name>(<member_variable>=<value>,...)
 >x.save() # this is a function which is inherited by the class from models.Model
 
 4.2. Now to check whether the instance has been properly added to the database, just print:
@@ -30,3 +30,10 @@ it will prompt for username,email and password which you'll fill in.
 9. Now run the server using python manage.py runserver
 
 10. go to http://127.0.0.1:8000/admin and use the login credentials you've just created to login to admin page.
+
+NOTE:
+After making any changes in the models.py file, we Must execute the following commands in the shell:
+python manage.py makemigrations
+python manage.py migrate
+
+So the Webserver knows that we have changed the files and will give us an okay signal on whether the changes we've made are structurally sound or not.
