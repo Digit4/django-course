@@ -1,0 +1,22 @@
+1. go to forms.py file and include:
+----
+from django-core import validators
+----
+
+2. Check documentation for different kinds of default validators. pick one and to apply,
+pass them as parameters to fields in the forms.
+ex -
+----
+class NewForm(forms.Form):
+	name = forms.CharField(validators=[checkz])
+----
+
+3. To catch bot scripts adding fake data into your forms, we need to check whether the forms are being tampered with or not.
+to do that, we need to add a hiddden field in the form class which can be done as follows:
+----
+class NewForm(forms.Form):
+	botcatcher = forms.CharField(required=False, widget=forms.HiddenInput, validators=[validators.<validator_name>])
+	# required = False will make the field non requirement so form can be submitted when it is empty.
+	# widget=forms.HiddenInput hides the charfield instead of showing it as a field in the form.
+	# validators is an array which will contain multiple validators if needed and can be passed in a list format.
+----
