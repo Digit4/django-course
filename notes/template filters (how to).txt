@@ -3,7 +3,7 @@
 3. Now after adding the template tag, we can use pipe symbol(s) (after the key from context dictionary in views.py file) followed by template tag filters.
 4. These template tag filters can either be built-in (Ref:https://docs.djangoproject.com/en/2.1/ref/templates/builtins/#ref-templates-builtins-filters), or for custom template filters, follow along below.
 5. To create custom template filters, go to the selected app folder and create a folder inside the app's folder named "templatetags".
-6. Inside the templatetags folder, we create a blank __init__.py file. This file is only created to let django know that templatetags folder exists and lets django access the folder's location for accessing .py files.
+6. ###Inside the templatetags folder, we create a blank __init__.py file. This file is only created to let django know that templatetags folder exists and lets django access the folder's location for accessing .py files.
 7. Now we create another file (lets say extras.py).
 8. Inside this file we can create out own custom filters that we can call into our django project.
-9.
+9.###Error can't follow up yet. will do later.###
