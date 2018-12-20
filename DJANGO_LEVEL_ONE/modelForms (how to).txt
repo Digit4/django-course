@@ -1,0 +1,41 @@
+1. Now we've seen how to create models(database) and we've seen how to create forms.
+2. Now we're gonna join both these and use forms to add data into moels(database).
+3. Luckily in django, there is a class called ModelForm which will just create a form from a pre-existing model inside our db.
+4.we then need to add a inline class (something we've now seen before) called meta
+5. This meta will provide us with information about the model-form connection.
+
+6. Example of a forms.py file for ModelForm.
+----
+from django import forms
+from <app_name>.models import <model_name>
+class MyNewForm(forms.ModelForm):
+	# Form fields go here.
+	# Usually no more fields are required. Since models.py will have created all the fields for you using django's framework.
+	# Only useful for custom validations.
+	class Meta():
+		model = <model_name>
+		fields = # Let's see options below!
+		# fields parameter is used to connect model's data to form fields.
+----
+Fields attributes:
+"__all__": all fields of models will be available for input in the form.
+['field1','field2',...]: specifically define which fields you wish to exclude from the form.
+('field1','field2',...): specifically define which fields you wish to include into the form.
+
+7. Now coming to views.py in app we write the following code to firstly, validate the form content, then save the submitted content into the database, after which we return the user to the home page.
+
+----
+def user_form_app(request):
+	form = <modelForm_name>()
+	
+	if request.method == "POST":
+		form = <modelForm_name>(request.POST)
+		if form.is_valid():
+			form.save(commit=True)	# commit=True will commit the form content into the database
+			return index(request)	# index(request) is a user-defined function which will contain the address to the homepage.
+						# Which means it will basically makeyou go back to home page
+	return render(request,'<location_of_template_form.html>'{'form':form})
+
+----
+
+
