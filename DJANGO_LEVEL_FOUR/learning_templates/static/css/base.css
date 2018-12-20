@@ -1,0 +1,22 @@
+body:not(h1) {
+	font-family: 'Slabo 27px', serif;
+	background-color: #24abe9;
+}
+
+.nav {
+	margin: 50px 0px;
+}
+
+.navbar-brand {
+	font-weight: bold;
+	font-size: 32px;
+	-webkit-transition: 0.3s;
+	transition: all 0.4s;
+	font-family: "Roboto Mono", monospace;
+}
+
+.navbar-brand:hover {
+	color: #f7756c;
+	padding-left: 5px;
+	border-bottom: red solid 2px;
+}

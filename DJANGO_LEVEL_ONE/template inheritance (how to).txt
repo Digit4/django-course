@@ -1,0 +1,15 @@
+1. Create a base template html file (lets call it base.html)
+2. Inside  the base.html file, you'll write all the code that you wish to inherit into other html templates.
+3. Then add the following code where the code template will contain the page specific content.
+----
+{%block body_block%}
+<!-- Anything inside these tags will be inherited if you extend this file into other files.-->
+{%endblock%}
+----
+4. Now create the file this template will inherit.
+5. Inside the html file you've just created, add the following code.
+<!DOCTYPE html>
+{%extends '<app_name>/<base_file>.html'%}
+	{%block body_block%}
+	<!--Your html content specific to this page goes in here.-->
+	{%endblock%}
