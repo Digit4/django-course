@@ -1,0 +1,20 @@
+1. Iniside models.py file of the app, add the following line.
+----
+from django.contrib.auth.models import User
+----
+This imports User class which is what we see when we login from the admin page of our website.
+
+2. Next we need to create our own models for our user profile.
+3. In our example we are going to be using an ImageField to save user's profile picture into our media folder.
+4. To be able to use images, we are going to need pillow(a python imaging library)
+----
+pip install pillow
+----
+
+5. Next after creating the model, we register it to admin by adding the following line to admin.py
+----
+from <app_name>.models import <model_name>
+
+
+admin.site.register(<model_name>)
+----

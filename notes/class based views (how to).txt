@@ -1,0 +1,45 @@
+1. Add the following header to views.py file in the required app.
+----
+from django.views.generic import View
+----
+
+2. To create a class based view, next we need to create the class with the View class inherited to the newly created class
+----
+class <class_name>(View):
+	def <func_name>(self, request):
+		return HTTPResponse("Hello World!")
+----
+
+3. In the urls.py file we need to add the following code instead now for views.<func_name>
+----
+url(r'^<regex>$', views.<class_name>.as_view())
+----
+Note: to add template views follow the procedure mentioned below
+
+
+################################################################################
+Next steps: Usting Template Views
+################################################################################
+
+1. Add the following header to views.py file in the required app.
+----
+from django.views.generic import View, TemplateView
+----
+(importing View before Template view is NOT manditory)
+
+2. Create a class inherited from TemplateView as follows:
+----
+class <class_name>(TemplateView):
+	template_name = "<template_location_inside_templates_folder>.html"
+----
+
+3. To inject the context dictionary define the following functions to overwrite the previously defined one.
+----
+class <class_name>(TemplateView):
+	template_name = "<template_location_inside_templates_folder>.html"
+
+	def get_context_data(self, **kwargs):
+		context = super().get_context_data(**kwargs)
+		context['<template_variable_name>'] = "content"
+		return context
+----

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{%extends 'newapp/base.html'%}
+{%load staticfiles%}
+
+	{%block body_block%}
+	<div class="jumbotron">
+		<h1>
+			<form action="{%url 'userlogin'%}" method="post" class="form-group">
+				{%csrf_token%}
+				<label for="username">Username:</label>
+				<input type="text" name="username" placeholder="enter username">
+
+				<label for="password">Password</label>
+				<input type="password" name="password" id="">
+				<input type="submit" name="submit" class="btn btn-primary">
+			</form>
+		</h1>
+	</div>
+	{%endblock%}
