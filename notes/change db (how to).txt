@@ -1,0 +1,10 @@
+1. To change the default database from sqlite to mysql, replace the default 
+values in the settings.py file by this.
+----
+'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'socialapp',
+        'USER': 'root',
+        'PASSWORD': 'root',
+        'host': 'localhost',
+        'port': '8000',
+----
